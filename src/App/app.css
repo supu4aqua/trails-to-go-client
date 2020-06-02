@@ -1,0 +1,8 @@
+* {
+  box-sizing: border-box;
+}
+
+.Main {
+  padding-left: 50px;
+  padding-top: 50px;
+}
