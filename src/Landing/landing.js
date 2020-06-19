@@ -7,26 +7,13 @@ import Footer from "../Footer/footer";
 
 class Landing extends Component {
   static contextType = Context;
+
   render() {
     return (
       <div role="main" className="main-landing">
-      <Nav />
-        <h2>Search for trails </h2>
-        <div className="search-trail">
-          <input
-            type="text"
-            className="search-trail"
-            name="search-trail"
-            id="search-trail"
-            placeholder="Enter Zipcode"
-            required
-          />
-        </div>
-
-        <Link to="/all-trails">
-          <button title="Search Trails" className="btn-search-trails">Search Trail</button>
-        </Link>
-        <Footer />
+        <Nav />
+        <h2> Looking for a hiking trail around you ? </h2>{" "}
+        <Link to="/all-trails"> Search Trails </Link> <Footer />
       </div>
     );
   }

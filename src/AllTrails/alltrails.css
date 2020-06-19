@@ -1,0 +1,24 @@
+.hidden {
+    display: none;
+}
+
+li{
+list-style: none;
+}
+
+
+.error-message {
+    border: 1px solid red;
+    padding: 20px;
+    text-align: center;
+    width: 50%;
+    background-color: #ff000021;
+}
+
+.trail-name{
+color: green;
+}
+
+.trail-completed{
+  text-decoration: line-through;
+}
