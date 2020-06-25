@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "./alltrails.css";
 import Nav from "../Nav/nav";
 import Footer from "../Footer/footer";

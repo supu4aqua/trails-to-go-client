@@ -3,8 +3,7 @@ import "./signin.css";
 import Context from "../Context";
 import Nav from "../Nav/nav";
 import Footer from "../Footer/footer";
-import TokenService from "../services/token-service";
-//import AuthApiService from '../services/auth-api-service';
+import AuthApiService from '../services/auth-api-service';
 
 class SignIn extends Component {
   static contextType = Context;
@@ -18,30 +17,23 @@ class SignIn extends Component {
   };
 
   handleSubmitJwtAuth = ev => {
-    ev.preventDefault();
-    this.setState({ error: null });
-    const { user_name, password } = ev.target;
-    TokenService.saveAuthToken(
-      TokenService.makeBasicAuthToken(user_name.value, password.value)
-    );
+    ev.preventDefault()
+    this.setState({ error: null })
+    const { user_name, password } = ev.target
 
-    user_name.value = "";
-    password.value = "";
-    this.handleLoginSuccess();
-    /*AuthApiService.postLogin({
-        user_name: user_name.value,
-        password: password.value,
+    AuthApiService.postLogin({
+      user_name: user_name.value,
+      password: password.value,
+    })
+      .then(res => {
+        user_name.value = ''
+        password.value = ''
+        this.handleLoginSuccess()
       })
-        .then(res => {
-          user_name.value = ''
-          password.value = ''
-          TokenService.saveAuthToken(res.authToken)
-          this.handleLoginSuccess()
-        })
-        .catch(res => {
-          this.setState({ error: res.error })
-        })*/
-  };
+      .catch(res => {
+        this.setState({ error: res.error })
+      })
+  }
 
   render() {
     const { error } = this.state;

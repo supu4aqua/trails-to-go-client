@@ -10,37 +10,32 @@ class SignUp extends Component {
 
   state = { error: null };
 
-  handleSubmit = ev => {
-    ev.preventDefault();
-    const { full_name, user_name, password } = ev.target;
-
-    full_name.value = "";
-
-    user_name.value = "";
-    password.value = "";
-    this.handleRegistrationSuccess();
-    /*this.setState({ error: null })
-      AuthApiService.postUser({
-        user_name: user_name.value,
-        password: password.value,
-        full_name: full_name.value,
-
-      })
-        .then(user => {
-          full_name.value = ''
-          user_name.value = ''
-          password.value = ''
-          this.handleRegistrationSuccess()
-        })
-        .catch(res => {
-          this.setState({ error: res.error })
-        })*/
-  };
-
   handleRegistrationSuccess = user => {
     const { history } = this.props;
     history.push("/signin");
   };
+
+
+  handleSubmit = ev => {
+    ev.preventDefault()
+    const { full_name, user_name, password } = ev.target
+
+    this.setState({ error: null })
+    AuthApiService.postUser({
+      user_name: user_name.value,
+      password: password.value,
+      full_name: full_name.value,
+    })
+      .then(user => {
+        full_name.value = ''
+        user_name.value = ''
+        password.value = ''
+        this.handleRegistrationSuccess()
+      })
+      .catch(res => {
+        this.setState({ error: res.error })
+      })
+  }
 
   render() {
     const { error } = this.state;

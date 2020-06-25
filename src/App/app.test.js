@@ -1,9 +1,12 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import ReactDOM from 'react-dom';
 import App from './App';
+import ShallowRenderer from 'react-test-renderer/shallow';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  const renderer = new ShallowRenderer();
+renderer.render(<App />, div);
+ReactDOM.unmountComponentAtNode(div);
 });

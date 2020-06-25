@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Landing from './landing';
+import Nav from './nav';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-ReactDOM.render(<Landing />, div);
+ReactDOM.render(<Nav />, div);
 ReactDOM.unmountComponentAtNode(div);
 });

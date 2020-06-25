@@ -24,11 +24,11 @@ class TrailDetails extends Component {
           </p>
           <p>Location: {findTrail.location}</p>
           <p>{findTrail.summary}</p>
-          <img
+      {findTrail.imgSmallMed !== "" &&  <img
             src={findTrail.imgSmallMed}
             alt="Preview"
             className="img-trail"
-          />
+          />}
         </div>
       ) : (
         []
