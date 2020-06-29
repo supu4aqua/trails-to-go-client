@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./alltrails.css";
 import Nav from "../Nav/nav";
 import Footer from "../Footer/footer";
+
 import Context from "../Context";
 import config from "../config";
 import TokenService from "../services/token-service";
@@ -99,7 +100,8 @@ class AllTrails extends Component {
       this.context.filteredTrails.length > 0 &&
       this.context.filteredTrails.map(
         trail =>
-          !this.context.completed.includes(trail.id) && (
+        !this.context.completed.find(trails => trails.id === trail.id) &&
+          (
             <li key={trail.id} className="trails">
               <div>
                 <NavLink to={`/trails/${trail.id}`}>{trail.name}</NavLink>
@@ -126,7 +128,8 @@ class AllTrails extends Component {
       this.context.completed.length > 0 &&
       this.context.filteredTrails.map(
         trail =>
-          this.context.completed.includes(trail.id) && (
+    this.context.completed.find(trails => trails.id === trail.id) &&
+          (
             <li key={trail.id} className="trails">
               <div>
                 <NavLink to={`/trails/${trail.id}`}>{trail.name}</NavLink>
