@@ -2,6 +2,16 @@
   box-sizing: border-box;
 }
 
+.Header__not-logged-in {
+  background-color: forestgreen;
+  padding: 20px;
+  font-size: 20px;
+}
+.Header__not-logged-in a {
+  color: white;
+  text-decoration: none;
+}
+
 .Main {
   padding-left: 25px;
   padding-right: 25px;

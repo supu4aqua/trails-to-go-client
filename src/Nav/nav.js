@@ -19,6 +19,8 @@ class Nav extends Component {
         </Link>{" "}
         <span className="Hyph"> {" - "} </span>{" "}
         <Link to="/userprofile"> Profile </Link>{" "}
+        <span className="Hyph"> {" - "} </span>{" "}
+        <Link to={`/leaderboard`}> Leaderboard </Link>{" "}
       </div>
     );
   }
@@ -29,6 +31,8 @@ class Nav extends Component {
         <Link to="/signup"> Register </Link>{" "}
         <span className="Hyph"> {" - "} </span>{" "}
         <Link to="/signin"> Log in </Link>{" "}
+        <span className="Hyph"> {" - "} </span>{" "}
+        <Link to={`/leaderboard`}> Leaderboard </Link>{" "}
       </div>
     );
   }
@@ -40,9 +44,6 @@ class Nav extends Component {
           {TokenService.hasAuthToken()
             ? this.renderLogoutLink()
             : this.renderLoginLink()}{" "}
-        </div>{" "}
-        <div className="Leaderboard">
-          <Link to={`/leaderboard`}> Leaderboard </Link>{" "}
         </div>{" "}
         <header className="App-header">
           <h1>
