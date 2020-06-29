@@ -8,7 +8,6 @@ import AllTrails from "../AllTrails/alltrails";
 import TrailDetails from "../TrailDetails/traildetails";
 import UserProfile from "../UserProfile/userprofile";
 import Leaderboard from "../Leaderboard/leaderboard";
-//import TokenService from '../services/token-service';
 import Context from "../Context";
 import ErrorBoundary from "../ErrorBoundary";
 
@@ -22,10 +21,10 @@ class App extends Component {
     setTrails: (trails, location) => {
       this.setState({ trails, filteredTrails: trails, location });
     },
-    setError: message => {
+    setError: (message) => {
       this.setState({ error: message });
     },
-    sortBy: key => {
+    sortBy: (key) => {
       let filteredTrails = this.state.trails.sort((a, b) => b[key] - a[key]);
       this.setState({ filteredTrails });
     },
@@ -35,23 +34,26 @@ class App extends Component {
         completed: [],
         filteredTrails: [],
         location: "",
-        error: ""
+        error: "",
       });
     },
-    setCompleted: id => {
+    setCompleted: (id) => {
       let findTrail = this.state.filteredTrails.find(
-        trail => trail.id === id
+        (trail) => trail.id === id
       );
-    //console.log(this.state.completed);
-    let completedTrail = (({ id, name, length, starVotes, stars}) => ({id, name, length, starVotes, stars }))(findTrail);
-  //  console.log(completedTrail)
-      this.state.completed.find(trail => trail.id === id)
+      let completedTrail = (({ id, name, length, starVotes, stars }) => ({
+        id,
+        name,
+        length,
+        starVotes,
+        stars,
+      }))(findTrail);
+      this.state.completed.find((trail) => trail.id === id)
         ? window.alert("Trail has already been marked as completed")
         : this.setState({
-           completed: [...this.state.completed, completedTrail]
-
+            completed: [...this.state.completed, completedTrail],
           });
-    }
+    },
   };
 
   render() {

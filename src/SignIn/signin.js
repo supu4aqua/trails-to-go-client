@@ -4,7 +4,6 @@ import Context from "../Context";
 import Nav from "../Nav/nav";
 import Footer from "../Footer/footer";
 import TokenService from "../services/token-service";
-//import AuthApiService from '../services/auth-api-service';
 
 class SignIn extends Component {
   static contextType = Context;
@@ -17,7 +16,7 @@ class SignIn extends Component {
     history.push(destination);
   };
 
-  handleSubmitJwtAuth = ev => {
+  handleSubmitJwtAuth = (ev) => {
     ev.preventDefault();
     this.setState({ error: null });
     const { user_name, password } = ev.target;
@@ -28,19 +27,6 @@ class SignIn extends Component {
     user_name.value = "";
     password.value = "";
     this.handleLoginSuccess();
-    /*AuthApiService.postLogin({
-        user_name: user_name.value,
-        password: password.value,
-      })
-        .then(res => {
-          user_name.value = ''
-          password.value = ''
-          TokenService.saveAuthToken(res.authToken)
-          this.handleLoginSuccess()
-        })
-        .catch(res => {
-          this.setState({ error: res.error })
-        })*/
   };
 
   render() {

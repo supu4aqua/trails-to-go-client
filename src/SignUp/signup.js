@@ -3,41 +3,23 @@ import "./signup.css";
 import Context from "../Context";
 import Nav from "../Nav/nav";
 import Footer from "../Footer/footer";
-import AuthApiService from "../services/auth-api-service";
 
 class SignUp extends Component {
   static contextType = Context;
 
   state = { error: null };
 
-  handleSubmit = ev => {
+  handleSubmit = (ev) => {
     ev.preventDefault();
     const { full_name, user_name, password } = ev.target;
 
     full_name.value = "";
-
     user_name.value = "";
     password.value = "";
     this.handleRegistrationSuccess();
-    /*this.setState({ error: null })
-      AuthApiService.postUser({
-        user_name: user_name.value,
-        password: password.value,
-        full_name: full_name.value,
-
-      })
-        .then(user => {
-          full_name.value = ''
-          user_name.value = ''
-          password.value = ''
-          this.handleRegistrationSuccess()
-        })
-        .catch(res => {
-          this.setState({ error: res.error })
-        })*/
   };
 
-  handleRegistrationSuccess = user => {
+  handleRegistrationSuccess = (user) => {
     const { history } = this.props;
     history.push("/signin");
   };
