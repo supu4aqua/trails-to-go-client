@@ -3,14 +3,15 @@ import "./signup.css";
 import Context from "../Context";
 import Nav from "../Nav/nav";
 import Footer from "../Footer/footer";
-import AuthApiService from "../services/auth-api-service";
 
 class SignUp extends Component {
   static contextType = Context;
 
   state = { error: null };
 
+
   handleRegistrationSuccess = user => {
+
     const { history } = this.props;
     history.push("/signin");
   };

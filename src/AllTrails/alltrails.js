@@ -6,36 +6,38 @@ import Context from "../Context";
 import config from "../config";
 import TokenService from "../services/token-service";
 import { NavLink } from "react-router-dom";
+import ImageNotFound from "./ImageNotFound.png";
+import Rating from "react-rating";
 
 class AllTrails extends Component {
   static contextType = Context;
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    //  this.context.clearResults();
+    this.context.clearResults();
     //Get zipcode and find find coordinates using google maps api
     const { zipcode } = e.target;
     const locationParams = {
       address: zipcode.value,
-      key: config.GEOCODE_API_KEY
+      key: config.GEOCODE_API_KEY,
     };
 
     //Create the parameters query for API call URL
     const queryItems = Object.keys(locationParams).map(
-      key =>
+      (key) =>
         `${encodeURIComponent(key)}=${encodeURIComponent(locationParams[key])}`
     );
     const queryString = queryItems.join("&");
     const urlCoord = config.GEOCODE_URL + "?" + queryString;
 
     fetch(urlCoord)
-      .then(response => {
+      .then((response) => {
         if (response.ok) {
           return response.json();
         }
         throw new Error(response.statusText);
       })
-      .then(responseJson => {
+      .then((responseJson) => {
         if (responseJson.results.length) {
           const coords = responseJson.results[0].geometry.location;
 
@@ -45,7 +47,7 @@ class AllTrails extends Component {
         }
       })
 
-      .catch(err => {
+      .catch((err) => {
         this.context.setError("Invalid Zip/Postal Code");
       });
   };
@@ -56,38 +58,34 @@ class AllTrails extends Component {
       lat: coords.lat,
       lon: coords.lng,
       maxResults: 30,
-      key: config.TRAIL_API_KEY
+      key: config.TRAIL_API_KEY,
     };
     const queryParams = Object.keys(params).map(
-      key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
+      (key) => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
     );
     const trailString = queryParams.join("&");
     const url = config.TRAIL_URL + "?" + trailString;
 
     fetch(url)
-      .then(res => {
+      .then((res) => {
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later");
         }
         return res.json();
       })
-      .then(data => {
+      .then((data) => {
         if (data.trails.length > 0) {
           this.context.setTrails(data.trails, location);
         } else {
           this.context.setError("No Matches Found");
         }
       })
-      .catch(err => {
+      .catch((err) => {
         this.context.setError("No Matches Found");
       });
   }
 
-  /*componentWillUnmount(){
-    this.context.clearResults();
-  }*/
-
-  handleCompleted = id => {
+  handleCompleted = (id) => {
     TokenService.hasAuthToken()
       ? this.context.setCompleted(id)
       : this.props.history.push("/signin");
@@ -97,10 +95,18 @@ class AllTrails extends Component {
     const trails =
       this.context.filteredTrails.length > 0 &&
       this.context.filteredTrails.map(
-        trail =>
-          !this.context.completed.includes(trail.id) && (
+        (trail) =>
+          !this.context.completed.find((trails) => trails.id === trail.id) && (
             <li key={trail.id} className="trails">
               <div>
+                <div
+                  className="trail-image"
+                  style={{
+                    backgroundImage: `url(${
+                      trail.imgSmallMed || ImageNotFound
+                    })`,
+                  }}
+                ></div>
                 <NavLink to={`/trails/${trail.id}`}>{trail.name}</NavLink>
                 <button
                   className="completed"
@@ -108,13 +114,10 @@ class AllTrails extends Component {
                     if (window.confirm("Did you complete this trail?"))
                       this.handleCompleted(trail.id);
                   }}
-                >
-                  Mark Completed
-                </button>
-                <p>
-                  Rating: {trail.stars} - Length: {trail.length}
-                </p>
-                <p>Location: {trail.location}</p>
+                ></button>
+                <Rating initialRating={trail.stars} />
+                <p>Length: {trail.length} mi</p>
+                <p>{trail.location}</p>
               </div>
             </li>
           )
@@ -124,15 +127,20 @@ class AllTrails extends Component {
       this.context.filteredTrails.length > 0 &&
       this.context.completed.length > 0 &&
       this.context.filteredTrails.map(
-        trail =>
-          this.context.completed.includes(trail.id) && (
+        (trail) =>
+          this.context.completed.find((trails) => trails.id === trail.id) && (
             <li key={trail.id} className="trails">
               <div>
+                <div
+                  className="trail-image"
+                  style={{
+                    backgroundImage: `url(${trail.imgSmallMed})`,
+                  }}
+                ></div>
                 <NavLink to={`/trails/${trail.id}`}>{trail.name}</NavLink>
-                <p>
-                  Rating: {trail.stars} - Length: {trail.length}
-                </p>
-                <p>Location: {trail.location}</p>
+                <Rating initialRating={trail.stars} />
+                <p>Length: {trail.length} mi</p>
+                <p>{trail.location}</p>
               </div>
             </li>
           )
@@ -145,7 +153,7 @@ class AllTrails extends Component {
           <select
             id="sort"
             name="sort"
-            onChange={e => this.context.sortBy(e.target.value)}
+            onChange={(e) => this.context.sortBy(e.target.value)}
           >
             <option value="">Select...</option>
             <option value="stars">Rating</option>
@@ -159,7 +167,7 @@ class AllTrails extends Component {
     return (
       <div className="all-trails">
         <Nav />
-        <form id="js-form" onSubmit={e => this.handleSubmit(e)}>
+        <form id="js-form" onSubmit={(e) => this.handleSubmit(e)}>
           <input
             type="text"
             className="search-trail"
@@ -184,9 +192,9 @@ class AllTrails extends Component {
         <section id="results">
           <ul id="results-list">{trails}</ul>
         </section>
-        <section id="completed-results">
+        <section id="results">
           {completedTrails.length > 0 && <h2>Completed</h2>}
-          <ul id="results-list-completed">{completedTrails}</ul>
+          <ul id="results-list">{completedTrails}</ul>
         </section>
         {this.context.error !== "" && (
           <div className="error-message">{this.context.error}</div>

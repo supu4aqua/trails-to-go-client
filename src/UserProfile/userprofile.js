@@ -8,10 +8,27 @@ class UserProfile extends Component {
   static contextType = Context;
 
   render() {
+    const trailsCompleted = this.context.completed.length;
+
+    const distanceWalked =
+      trailsCompleted > 0
+        ? this.context.completed
+            .map((trail) => trail.length)
+            .reduce((a, c) => {
+              return a + c;
+            })
+            .toFixed(2)
+        : 0;
+    const trailLengths = this.context.completed.map((trail) => trail.length);
+    const maxLength = trailLengths.sort((a, b) => a - b);
+
+    const isLongestTrail = maxLength[maxLength.length - 1];
+
+    const longestTrail = isLongestTrail > 0 ? isLongestTrail : 0;
+
     return (
       <div className="profile">
         <Nav />
-
         <button
           title="Go back"
           className="go-back"
@@ -19,7 +36,9 @@ class UserProfile extends Component {
         >
           Back
         </button>
-        <p>Trails completed: {this.context.completed.length}</p>
+        <p>Trails completed: {trailsCompleted}</p>
+        <p>Distance Walked: {distanceWalked} miles</p>
+        <p>Longest Trail Completed: {longestTrail} miles</p>
 
         <Footer />
       </div>

@@ -2,7 +2,125 @@
   box-sizing: border-box;
 }
 
+.Header__not-logged-in {
+  background-color: forestgreen;
+  padding: 20px;
+  font-size: 20px;
+}
+.Header__not-logged-in a {
+  color: white;
+  text-decoration: none;
+}
+
 .Main {
-  padding-left: 50px;
-  padding-top: 50px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 25px;
+}
+
+h1 a {
+  font-size: 30px;
+}
+.main-landing > a {
+  padding: 15px 30px;
+  font-size: 25px;
+  background-color: forestgreen;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  display: inline-block;
+  border-bottom: 3px solid darkgreen;
+}
+
+input,
+button {
+  font-size: 25px;
+  padding: 10px;
+}
+
+#js-form input,
+#js-form button {
+  font-size: 25px;
+  padding: 10px;
+}
+
+h3 {
+  font-size: 25px;
+  border-top: 1px solid #ccc;
+  padding-top: 25px;
+}
+
+.trail-filters section * {
+  font-size: 25px;
+  padding-right: 10px;
+}
+
+li.trails {
+  flex: 1;
+  min-width: 20%;
+  border: 1px solid forestgreen;
+  padding: 25px;
+  margin: 25px;
+  position: relative;
+}
+
+ul#results-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.trails a {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+button.completed {
+  display: block;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 40px;
+  width: 40px;
+  background-image: url("../Completed.jpg");
+  background-size: 40px auto;
+  cursor: pointer;
+}
+button.completed:hover {
+  opacity: 0.8;
+}
+
+button.go-back {
+  padding: 15px 30px;
+  font-size: 25px;
+  background-color: forestgreen;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  display: inline-block;
+  border-bottom: 3px solid darkgreen;
+}
+
+li.trails:hover {
+  background-color: lightseagreen;
+  color: white;
+}
+
+.trail-image {
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  li.trails {
+    margin: 25px 0;
+  }
+  ul#results-list {
+    flex-direction: column;
+    padding: 0;
+  }
 }
