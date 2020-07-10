@@ -1,0 +1,13 @@
+.Footer {
+  text-align: right;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .Footer {
+    font-size: 8px;
+  }
+}

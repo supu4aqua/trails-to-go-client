@@ -6,7 +6,7 @@ class Footer extends Component {
     return (
       <div className="Footer">
         <p>
-          &copy;Supreet Kaur | 2020 -{" "}
+          &copy; Supreet Kaur | 2020 -{" "}
           <span>
             <span>
               Photo by{" "}

@@ -1,0 +1,35 @@
+/* form and label css is in login.css*/
+
+.registration {
+  margin: 0 !important;
+  min-height: 100vh;
+  text-align: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.registration .Footer {
+  text-align: right;
+}
+
+.RegistrationForm {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registration button {
+  margin-top: 30px;
+  padding: 5px 15px;
+  font-size: 20px;
+  background-color: forestgreen;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  display: inline-block;
+  border-bottom: 3px solid darkgreen;
+}

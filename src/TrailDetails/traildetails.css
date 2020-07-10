@@ -1,0 +1,40 @@
+.details {
+  margin: 0 !important;
+}
+
+.trail-details .go-back {
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.details h3 {
+  padding: 0;
+  display: block;
+  text-align: center;
+  margin-top: 0;
+  margin-left: 20px;
+}
+
+.details p {
+  font-family: monospace;
+}
+
+.details img {
+  width: 200px;
+  height: 200px;
+}
+.details .trail-details {
+  margin-left: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .details h3 {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  .details img {
+    width: 150px;
+    height: 150px;
+  }
+}

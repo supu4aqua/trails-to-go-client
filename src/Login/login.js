@@ -41,12 +41,12 @@ class Login extends Component {
   render() {
     const { error } = this.state;
     return (
-      <div role="main" className="main-landing">
+      <div role="main" className="registration">
         <Nav />
         <header>
           <h3> Login </h3>{" "}
         </header>{" "}
-        <form className="LoginForm" onSubmit={this.handleSubmitJwtAuth}>
+        <form className="RegistrationForm" onSubmit={this.handleSubmitJwtAuth}>
           <div role="alert">{error && <p className="red">{error}</p>}</div>
           <div className="user_name">
             <label htmlFor="LoginForm__user_name">Username</label>

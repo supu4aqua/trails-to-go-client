@@ -42,7 +42,7 @@ class Leaderboard extends Component {
       ? this.state.leaderboards.longestTrails.map((user) => (
           <li key={user.name} className="length-by-user">
             <p>
-              {user.name} - {user.length} miles
+              <strong>{user.name}</strong> - {user.length} miles
             </p>
           </li>
         ))
@@ -53,7 +53,7 @@ class Leaderboard extends Component {
       ? this.state.leaderboards.lengthByUser.map((user) => (
           <li key={user.user_name} className="length-by-user">
             <p>
-              {user.user_name} - {user.length} miles
+              <strong>{user.user_name}</strong> - {user.length} miles
             </p>
           </li>
         ))
@@ -64,7 +64,7 @@ class Leaderboard extends Component {
       ? this.state.leaderboards.mostTrailsByUser.map((user) => (
           <li key={user.user_name} className="length-by-user">
             <p>
-              {user.user_name} - {user.completed} trails
+              <strong>{user.user_name}</strong> - {user.completed} trails
             </p>
           </li>
         ))
@@ -74,34 +74,40 @@ class Leaderboard extends Component {
     return (
       <div className="Leaderboard">
         <Nav />
-        <header>
+        <div>
+          <button
+            title="Go back"
+            className="go-back"
+            onClick={() => this.props.history.push("/all-trails")}
+          >
+            Back
+          </button>
           <h3> Leaderboard </h3>{" "}
-        </header>{" "}
-        <button
-          title="Go back"
-          className="go-back"
-          onClick={() => this.props.history.push("/all-trails")}
-        >
-          Back to Results
-        </button>
+        </div>
         {/*Longest trail completed by each user - sorted by trail length */}
         <section id="longest-by-user">
           {longestTrails.length > 0 && (
-            <h3>Top hikers based on longest trail completed</h3>
+            <p className="leaderboard-title">
+              Top hikers based on longest trail completed
+            </p>
           )}
           <ul id="longest-by-user-list">{longestTrails}</ul>
         </section>
         {/*Total distance walked by each user - sorted by trail length */}
         <section id="length-by-user">
           {totalLengthByUser.length > 0 && (
-            <h3>Top hikers based on distance walked</h3>
+            <p className="leaderboard-title">
+              Top hikers based on distance walked
+            </p>
           )}
           <ul id="length-by-user-list">{totalLengthByUser}</ul>
         </section>
         {/*Number of trails completed by each user - sort by count */}
         <section id="count-by-user">
           {mostTrailsByUser.length > 0 && (
-            <h3>Top hikers based on trails completed</h3>
+            <p className="leaderboard-title">
+              Top hikers based on trails completed
+            </p>
           )}
           <ul id="count-by-user-list">{mostTrailsByUser}</ul>
         </section>

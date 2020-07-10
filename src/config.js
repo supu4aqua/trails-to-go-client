@@ -3,6 +3,7 @@ export default {
   GEOCODE_URL: `https://maps.googleapis.com/maps/api/geocode/json`,
   TRAIL_API_KEY: process.env.REACT_APP_TRAIL_API_KEY,
   GEOCODE_API_KEY: process.env.REACT_APP_GEOCODE_API_KEY,
-  API_ENDPOINT: "https://calm-tundra-62554.herokuapp.com",
+  API_ENDPOINT: `https://calm-tundra-62554.herokuapp.com`,
+  //API_ENDPOINT: "http://localhost:8000/api",
   TOKEN_KEY: process.env.REACT_APP_TOKEN_KEY,
 };

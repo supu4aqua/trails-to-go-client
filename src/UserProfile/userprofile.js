@@ -48,22 +48,24 @@ class UserProfile extends Component {
     return (
       <div className="profile">
         <Nav />
-        <header>
-          <h3> User Profile </h3>{" "}
-        </header>{" "}
         <button
           title="Go back"
           className="go-back"
           onClick={() => this.props.history.push("/all-trails")}
         >
-          Back to Results
+          Back
         </button>
-        <p>Trails completed: {numTrailsCompleted}</p>
-        <p>Distance Walked: {distanceWalked.toFixed(2)} miles</p>
-        <p>Longest Trail Completed: {longestTrail} miles</p>
+        <h3> User Profile </h3>{" "}
         <p>
-          <strong>Completed Trails</strong>
+          <strong>Trails completed:</strong> {numTrailsCompleted}
         </p>
+        <p>
+          <strong>Distance Walked:</strong> {distanceWalked.toFixed(2)} miles
+        </p>
+        <p>
+          <strong>Longest Trail Completed:</strong> {longestTrail} miles
+        </p>
+        <p className="completed-trails">Completed Trails</p>
         <div className="trailList">
           <ul>{trails}</ul>
         </div>

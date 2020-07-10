@@ -1,0 +1,45 @@
+.Leaderboard .go-back {
+  margin-top: 20px;
+  font-size: 15px;
+  margin: 20px;
+}
+
+.Leaderboard {
+  margin: 0 !important;
+}
+.Leaderboard h3 {
+  padding: 0;
+  display: block;
+  text-align: center;
+  margin-top: 0;
+}
+
+.Leaderboard h3,
+.leaderboard-title,
+.length-by-user p {
+  font-family: monospace;
+}
+.leaderboard-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: forestgreen;
+  margin: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .Leaderboard h3 {
+    font-size: 15px;
+  }
+  .leaderboard-title {
+    font-size: 15px;
+    font-weight: bold;
+    color: forestgreen;
+  }
+  .Leaderboard section * {
+    font-size: 13px;
+  }
+  .Leaderboard Footer {
+    font-size: 8px;
+  }
+}

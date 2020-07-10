@@ -17,3 +17,110 @@ li {
 .trail-name {
   color: green;
 }
+
+.trail-filters section * {
+  font-size: 15px;
+  padding-right: 10px;
+  margin-left: 20px;
+}
+.trail-filters select {
+  padding: 3px;
+}
+
+li.trails {
+  flex: 1;
+  min-width: 20%;
+  border: 1px solid forestgreen;
+  padding: 15px 15px 0 15px;
+  margin: 15px;
+  position: relative;
+}
+
+ul#results-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.trails a {
+  font-size: 15px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.all-trails .location {
+  margin-left: 20px;
+}
+.trails p {
+  font-size: 12px;
+}
+
+button.completed {
+  display: block;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 30px;
+  width: 30px;
+  background-image: url("../Completed.jpg");
+  cursor: pointer;
+  background-size: 90%;
+  background-position: center center;
+  background-color: transparent;
+}
+button.completed:hover {
+  opacity: 0.8;
+}
+
+li.trails:hover {
+  background-color: lightseagreen;
+  color: white;
+}
+
+.trail-image {
+  height: 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  margin-bottom: 10px;
+}
+
+.all-trails {
+  margin: 0 !important;
+  min-height: 100vh;
+  margin-left: 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.all-trails h3,
+.all-trails h2,
+#js-form {
+  margin-left: 20px;
+}
+
+.all-trails .Footer {
+  text-align: right;
+  bottom: 0;
+  right: 0;
+  position: relative;
+}
+
+all-trails h3 {
+  padding-top: 0;
+}
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  li.trails {
+    margin: 25px 0;
+  }
+  ul#results-list {
+    flex-direction: column;
+    padding: 0;
+    margin: 20px;
+  }
+}

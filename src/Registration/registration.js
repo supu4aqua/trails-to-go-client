@@ -42,7 +42,7 @@ class Registration extends Component {
   render() {
     const { error } = this.state;
     return (
-      <div role="main" className="main-landing">
+      <div role="main" className="registration">
         <Nav />
         <header>
           <h3>Sign up for a new account</h3>

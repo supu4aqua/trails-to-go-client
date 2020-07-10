@@ -19,10 +19,9 @@ class TrailDetails extends Component {
     const trailDetails =
       findTrail.length > 0 ? (
         <div>
-          <h2>{findTrail.name}</h2>
-          <p>
-            Rating: {findTrail.stars} - Length: {findTrail.length}
-          </p>
+          <h3>{findTrail.name}</h3>
+          <p>Rating: {findTrail.stars}</p>
+          <p>Length: {findTrail.length} miles</p>
           <p>Location: {findTrail.location}</p>
           <p>{findTrail.summary}</p>
           {findTrail.imgSmallMed !== "" && (
@@ -39,17 +38,19 @@ class TrailDetails extends Component {
 
     //Render the trail deteails
     return (
-      <div role="main" className="main-landing">
+      <div role="main" className="details">
         <Nav />
-        <button
-          title="Go back"
-          className="go-back"
-          onClick={() => this.props.history.goBack()}
-        >
-          Back
-        </button>
-        {trailDetails}
-        <Footer />
+        <div role="main" className="trail-details">
+          <button
+            title="Go back"
+            className="go-back"
+            onClick={() => this.props.history.goBack()}
+          >
+            Back
+          </button>
+          {trailDetails}
+          <Footer />
+        </div>
       </div>
     );
   }

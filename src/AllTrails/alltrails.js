@@ -252,7 +252,7 @@ class AllTrails extends Component {
           </button>
         </form>
         {this.context.location !== "" && (
-          <h3>Results for: {this.context.location}</h3>
+          <p className="location">Results for: {this.context.location}</p>
         )}
         {/*Display all trails not completed by user*/}
         <div className="trail-filters">{trailFilters}</div>

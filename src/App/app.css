@@ -2,30 +2,11 @@
   box-sizing: border-box;
 }
 
-nav {
-  background-color: forestgreen;
-  padding: 20px;
-  font-size: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-@media screen and (max-width: 700px) {
-  nav {
-    flex-direction: column;
-  }
-}
-nav a {
-  color: white;
-  text-decoration: none;
-}
-
-nav h1 {
-  margin: 0;
-}
-
 .Main {
   padding: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  min-height: 100vh;
 }
 
 .Main > div {
@@ -37,82 +18,11 @@ nav h1 {
 h1 a {
   font-size: 30px;
 }
-
-input,
-button {
-  font-size: 20;
-  padding: 5px 15px;
-}
-
-form div {
-  display: flex;
-  justify-content: space-between;
-  max-width: 400px;
-  align-items: center;
-}
-
-form input {
-  margin-bottom: 10px;
-  flex: 1;
-}
-
-form label {
-  padding-right: 20px;
-  margin-bottom: 10px;
-  color: white;
-  padding-left: 20px;
-}
-
 h3 {
   font-size: 25px;
-  border-top: 1px solid #ccc;
+  /* border-top: 1px solid #ccc;*/
   padding-top: 25px;
 }
-
-.trail-filters section * {
-  font-size: 25px;
-  padding-right: 10px;
-}
-
-li.trails {
-  flex: 1;
-  min-width: 20%;
-  border: 1px solid forestgreen;
-  padding: 25px;
-  margin: 15px;
-  position: relative;
-}
-
-ul#results-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.trails a {
-  font-size: 20px;
-  font-weight: bold;
-  display: block;
-  margin-bottom: 10px;
-}
-
-button.completed {
-  display: block;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  height: 30px;
-  width: 30px;
-  background-image: url("../Completed.jpg");
-  cursor: pointer;
-  background-size: 90%;
-  background-position: center center;
-  background-color: transparent;
-}
-button.completed:hover {
-  opacity: 0.8;
-}
-
 button.go-back {
   padding: 5px 15px;
   font-size: 20px;
@@ -122,28 +32,4 @@ button.go-back {
   border-radius: 10px;
   display: inline-block;
   border-bottom: 3px solid darkgreen;
-}
-
-li.trails:hover {
-  background-color: lightseagreen;
-  color: white;
-}
-
-.trail-image {
-  height: 150px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  margin-bottom: 10px;
-}
-
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
-  li.trails {
-    margin: 25px 0;
-  }
-  ul#results-list {
-    flex-direction: column;
-    padding: 0;
-  }
 }

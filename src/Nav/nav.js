@@ -33,8 +33,7 @@ class Nav extends Component {
     return (
       <div className="Header__not-logged-in">
         <Link to="/registration"> Register </Link>{" "}
-        <span className="Hyph"> {" - "} </span>{" "}
-        <Link to="/login"> Log in </Link>{" "}
+        <span className="Hyph"> {" - "} </span> <Link to="/login"> Login </Link>{" "}
         <span className="Hyph"> {" - "} </span>{" "}
         <Link to={`/leaderboard`}> Leaderboard </Link>{" "}
       </div>
