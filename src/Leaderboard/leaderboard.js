@@ -86,17 +86,23 @@ class Leaderboard extends Component {
         </button>
         {/*Longest trail completed by each user - sorted by trail length */}
         <section id="longest-by-user">
-          <h3>Top hikers based on longest trail completed</h3>
+          {longestTrails.length > 0 && (
+            <h3>Top hikers based on longest trail completed</h3>
+          )}
           <ul id="longest-by-user-list">{longestTrails}</ul>
         </section>
         {/*Total distance walked by each user - sorted by trail length */}
         <section id="length-by-user">
-          <h3>Top hikers based on distance walked</h3>
+          {totalLengthByUser.length > 0 && (
+            <h3>Top hikers based on distance walked</h3>
+          )}
           <ul id="length-by-user-list">{totalLengthByUser}</ul>
         </section>
         {/*Number of trails completed by each user - sort by count */}
         <section id="count-by-user">
-          <h3>Top hikers based on trails completed</h3>
+          {mostTrailsByUser.length > 0 && (
+            <h3>Top hikers based on trails completed</h3>
+          )}
           <ul id="count-by-user-list">{mostTrailsByUser}</ul>
         </section>
         <Footer />
