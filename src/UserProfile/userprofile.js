@@ -7,39 +7,66 @@ import Context from "../Context";
 class UserProfile extends Component {
   static contextType = Context;
 
+  //Get all completed trails when component mounts
+  componentDidMount() {
+    this.context.getCompleted();
+  }
+
   render() {
-    const trailsCompleted = this.context.completed.length;
+    let numTrailsCompleted = 0;
+    let distanceWalked = 0;
+    let longestTrail = 0;
+    let trails = [];
 
-    const distanceWalked =
-      trailsCompleted > 0
-        ? this.context.completed
-            .map((trail) => trail.length)
-            .reduce((a, c) => {
-              return a + c;
-            })
-            .toFixed(2)
-        : 0;
-    const trailLengths = this.context.completed.map((trail) => trail.length);
-    const maxLength = trailLengths.sort((a, b) => a - b);
+    const completedTrails = this.context.completed;
 
-    const isLongestTrail = maxLength[maxLength.length - 1];
+    if (completedTrails.length) {
+      //Find number of trails completed by user
+      numTrailsCompleted = completedTrails.length;
 
-    const longestTrail = isLongestTrail > 0 ? isLongestTrail : 0;
+      //Length of longest trail completed
+      var maxTrailLength = completedTrails.reduce(function (prev, current) {
+        return prev.length > current.length ? prev : current;
+      });
+      longestTrail = maxTrailLength.length;
+
+      //Total distance walked combining length of all completed trails
+      for (var i = 0; i < completedTrails.length; i++) {
+        distanceWalked = distanceWalked + parseFloat(completedTrails[i].length);
+      }
+
+      //Find all the completed trails
+      trails = this.context.completed
+        .sort((a, b) => b.completed_on - a.completed_on)
+        .map((trail) => (
+          <li key={trail.trail_id} className="trails-list">
+            {trail.name} - {trail.length} miles
+          </li>
+        ));
+    }
 
     return (
       <div className="profile">
         <Nav />
+        <header>
+          <h3> User Profile </h3>{" "}
+        </header>{" "}
         <button
           title="Go back"
           className="go-back"
-          onClick={() => this.props.history.goBack()}
+          onClick={() => this.props.history.push("/all-trails")}
         >
-          Back
+          Back to Results
         </button>
-        <p>Trails completed: {trailsCompleted}</p>
-        <p>Distance Walked: {distanceWalked} miles</p>
+        <p>Trails completed: {numTrailsCompleted}</p>
+        <p>Distance Walked: {distanceWalked.toFixed(2)} miles</p>
         <p>Longest Trail Completed: {longestTrail} miles</p>
-
+        <p>
+          <strong>Completed Trails</strong>
+        </p>
+        <div className="trailList">
+          <ul>{trails}</ul>
+        </div>
         <Footer />
       </div>
     );

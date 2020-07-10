@@ -2,21 +2,18 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./nav.css";
 
-import TokenService from '../services/token-service'
-import IdleService from '../services/idle-service'
+import TokenService from "../services/token-service";
+import IdleService from "../services/idle-service";
 import Context from "../Context";
-
 
 class Nav extends Component {
   static contextType = Context;
   handleLogoutClick = () => {
-
-    TokenService.clearAuthToken()
+    TokenService.clearAuthToken();
     /* when logging out, clear the callbacks to the refresh api and idle auto logout */
-    TokenService.clearCallbackBeforeExpiry()
-    IdleService.unRegisterIdleResets()
-
-  }
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
+  };
 
   renderLogoutLink() {
     return (
@@ -35,9 +32,9 @@ class Nav extends Component {
   renderLoginLink() {
     return (
       <div className="Header__not-logged-in">
-        <Link to="/signup"> Register </Link>{" "}
+        <Link to="/registration"> Register </Link>{" "}
         <span className="Hyph"> {" - "} </span>{" "}
-        <Link to="/signin"> Log in </Link>{" "}
+        <Link to="/login"> Log in </Link>{" "}
         <span className="Hyph"> {" - "} </span>{" "}
         <Link to={`/leaderboard`}> Leaderboard </Link>{" "}
       </div>
@@ -46,25 +43,15 @@ class Nav extends Component {
   render() {
     return (
       <nav role="main" className="Nav">
+        <h1>
+          <Link to="/">Trails To Go </Link>{" "}
+        </h1>{" "}
         <div className="Login">
           {" "}
           {TokenService.hasAuthToken()
             ? this.renderLogoutLink()
             : this.renderLoginLink()}{" "}
         </div>{" "}
-        <header className="App-header">
-          <h1>
-            <Link
-              to="/"
-              style={{
-                color: "#3CB371",
-                textDecoration: "none",
-              }}
-            >
-              Trails To Go{" "}
-            </Link>{" "}
-          </h1>{" "}
-        </header>{" "}
       </nav>
     );
   }

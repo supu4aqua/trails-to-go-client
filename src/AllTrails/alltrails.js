@@ -12,10 +12,21 @@ import Rating from "react-rating";
 class AllTrails extends Component {
   static contextType = Context;
 
+  //Fetch all the trails completed by the user if the user is already logged in
+  componentDidMount() {
+    if (TokenService.hasAuthToken()) {
+      this.context.getCompleted();
+    }
+  }
+
+  //Search trails by finding the geo location of zipcode entered
   handleSubmit = (e) => {
     e.preventDefault();
     this.context.clearResults();
-    //Get zipcode and find find coordinates using google maps api
+    if (TokenService.hasAuthToken()) {
+      this.context.getCompleted();
+    }
+    //Get zipcode and find the coordinates using google maps api
     const { zipcode } = e.target;
     const locationParams = {
       address: zipcode.value,
@@ -52,7 +63,7 @@ class AllTrails extends Component {
       });
   };
 
-  //Search trails
+  //Search trails - Result is limited to max 30 trails for each search
   searchTrails(coords, location) {
     const params = {
       lat: coords.lat,
@@ -85,67 +96,118 @@ class AllTrails extends Component {
       });
   }
 
-  handleCompleted = (id) => {
+  //check if the auth toekn exists or not before marking any trail as completed
+  handleCompleted = (trail_id) => {
     TokenService.hasAuthToken()
-      ? this.context.setCompleted(id)
-      : this.props.history.push("/signin");
+      ? this.postCompleted(trail_id)
+      : this.props.history.push("/login");
   };
 
+  //Post trail as completed
+  postCompleted(trail_id) {
+    let findTrail = this.context.filteredTrails.find(
+      (trail) => trail.id === trail_id
+    );
+    let completedTrail = (({ id, name, length }) => ({
+      trail_id,
+      name,
+      length,
+    }))(findTrail);
+
+    //Update database with completed trail
+    fetch(config.API_ENDPOINT + `/completed`, {
+      method: "POST",
+      body: JSON.stringify(completedTrail),
+      headers: {
+        Authorization: `bearer ${TokenService.getAuthToken()}`,
+        "content-type": "application/json",
+      },
+    })
+      .then((res) =>
+        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+      )
+      .then(this.context.setCompleted(completedTrail))
+
+      .catch(this.context.setError);
+  }
+
+  //Render Search results
   render() {
-    const trails =
-      this.context.filteredTrails.length > 0 &&
-      this.context.filteredTrails.map(
-        (trail) =>
-          !this.context.completed.find((trails) => trails.id === trail.id) && (
-            <li key={trail.id} className="trails">
-              <div>
-                <div
-                  className="trail-image"
-                  style={{
-                    backgroundImage: `url(${
-                      trail.imgSmallMed || ImageNotFound
-                    })`,
-                  }}
-                ></div>
-                <NavLink to={`/trails/${trail.id}`}>{trail.name}</NavLink>
-                <button
-                  className="completed"
-                  onClick={() => {
-                    if (window.confirm("Did you complete this trail?"))
-                      this.handleCompleted(trail.id);
-                  }}
-                ></button>
-                <Rating initialRating={trail.stars} />
-                <p>Length: {trail.length} mi</p>
-                <p>{trail.location}</p>
-              </div>
-            </li>
+    let trailsNotCompleted = [];
+    let trails = [];
+    let trailsCompleted = [];
+    let completedTrails = [];
+
+    if (this.context.filteredTrails.length > 0) {
+      //Find all trails not completed by user
+      trailsNotCompleted = this.context.filteredTrails.filter(
+        (filteredTrail) =>
+          !this.context.completed.find(
+            (completedTrail) => filteredTrail.id === completedTrail.trail_id
           )
       );
 
-    const completedTrails =
-      this.context.filteredTrails.length > 0 &&
-      this.context.completed.length > 0 &&
-      this.context.filteredTrails.map(
-        (trail) =>
-          this.context.completed.find((trails) => trails.id === trail.id) && (
-            <li key={trail.id} className="trails">
-              <div>
-                <div
-                  className="trail-image"
-                  style={{
-                    backgroundImage: `url(${trail.imgSmallMed})`,
-                  }}
-                ></div>
-                <NavLink to={`/trails/${trail.id}`}>{trail.name}</NavLink>
-                <Rating initialRating={trail.stars} />
-                <p>Length: {trail.length} mi</p>
-                <p>{trail.location}</p>
-              </div>
-            </li>
-          )
+      trails =
+        trailsNotCompleted.length > 0 &&
+        trailsNotCompleted.map((trail) => (
+          <li key={trail.id} className="trails">
+            <div>
+              <div
+                className="trail-image"
+                style={{
+                  backgroundImage: `url(${trail.imgSmallMed || ImageNotFound})`,
+                }}
+              ></div>
+              <NavLink to={`/trails/${trail.id}`}>{trail.name}</NavLink>
+              <button
+                className="completed"
+                onClick={() => {
+                  if (window.confirm("Did you complete this trail?"))
+                    this.handleCompleted(trail.id);
+                }}
+              ></button>
+              <Rating initialRating={trail.stars} />
+              <p>Length: {trail.length} mi</p>
+              <p>{trail.location}</p>
+            </div>
+          </li>
+        ));
+
+      //Find all trails completed by user
+      trailsCompleted = this.context.filteredTrails.filter((filteredTrail) =>
+        this.context.completed.find(
+          (completedTrail) => filteredTrail.id === completedTrail.trail_id
+        )
       );
 
+      completedTrails =
+        trailsCompleted.length > 0 &&
+        trailsCompleted.map((trail) => (
+          <li key={trail.id} className="trails">
+            <div>
+              <div
+                className="trail-image"
+                style={{
+                  backgroundImage: `url(${trail.imgSmallMed || ImageNotFound})`,
+                }}
+              ></div>
+              <NavLink to={`/trails/${trail.id}`}>{trail.name}</NavLink>
+              <button
+                className="completed"
+                onClick={() => {
+                  if (window.confirm("Did you complete this trail?"))
+                    this.handleCompleted(trail.id);
+                }}
+              ></button>
+              <Rating initialRating={trail.stars} />
+              <p>Length: {trail.length} mi</p>
+              <p>{trail.location}</p>
+            </div>
+          </li>
+        ));
+    }
+
+    //Trail search filters
     const trailFilters =
       this.context.filteredTrails.length > 0 ? (
         <section>
@@ -164,9 +226,13 @@ class AllTrails extends Component {
         []
       );
 
+    //Display results
     return (
       <div className="all-trails">
         <Nav />
+        <header>
+          <h3> Search </h3>{" "}
+        </header>{" "}
         <form id="js-form" onSubmit={(e) => this.handleSubmit(e)}>
           <input
             type="text"
@@ -188,18 +254,20 @@ class AllTrails extends Component {
         {this.context.location !== "" && (
           <h3>Results for: {this.context.location}</h3>
         )}
+        {/*Display all trails not completed by user*/}
         <div className="trail-filters">{trailFilters}</div>
         <section id="results">
           <ul id="results-list">{trails}</ul>
         </section>
+        {/*Completed trails section*/}
         <section id="results">
           {completedTrails.length > 0 && <h2>Completed</h2>}
           <ul id="results-list">{completedTrails}</ul>
         </section>
+        {/*Display errors, if any */}
         {this.context.error !== "" && (
           <div className="error-message">{this.context.error}</div>
         )}
-
         <Footer />
       </div>
     );

@@ -2,46 +2,65 @@
   box-sizing: border-box;
 }
 
-.Header__not-logged-in {
+nav {
   background-color: forestgreen;
   padding: 20px;
   font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.Header__not-logged-in a {
+@media screen and (max-width: 700px) {
+  nav {
+    flex-direction: column;
+  }
+}
+nav a {
   color: white;
   text-decoration: none;
 }
 
+nav h1 {
+  margin: 0;
+}
+
 .Main {
-  padding-left: 25px;
-  padding-right: 25px;
-  padding-top: 25px;
+  padding: 0;
+}
+
+.Main > div {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 25px;
 }
 
 h1 a {
   font-size: 30px;
 }
-.main-landing > a {
-  padding: 15px 30px;
-  font-size: 25px;
-  background-color: forestgreen;
-  color: white;
-  text-decoration: none;
-  border-radius: 10px;
-  display: inline-block;
-  border-bottom: 3px solid darkgreen;
-}
 
 input,
 button {
-  font-size: 25px;
-  padding: 10px;
+  font-size: 20;
+  padding: 5px 15px;
 }
 
-#js-form input,
-#js-form button {
-  font-size: 25px;
-  padding: 10px;
+form div {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+  align-items: center;
+}
+
+form input {
+  margin-bottom: 10px;
+  flex: 1;
+}
+
+form label {
+  padding-right: 20px;
+  margin-bottom: 10px;
+  color: white;
+  padding-left: 20px;
 }
 
 h3 {
@@ -60,7 +79,7 @@ li.trails {
   min-width: 20%;
   border: 1px solid forestgreen;
   padding: 25px;
-  margin: 25px;
+  margin: 15px;
   position: relative;
 }
 
@@ -71,8 +90,10 @@ ul#results-list {
 }
 
 .trails a {
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
 }
 
 button.completed {
@@ -80,19 +101,21 @@ button.completed {
   position: absolute;
   top: 5px;
   right: 5px;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   background-image: url("../Completed.jpg");
-  background-size: 40px auto;
   cursor: pointer;
+  background-size: 90%;
+  background-position: center center;
+  background-color: transparent;
 }
 button.completed:hover {
   opacity: 0.8;
 }
 
 button.go-back {
-  padding: 15px 30px;
-  font-size: 25px;
+  padding: 5px 15px;
+  font-size: 20px;
   background-color: forestgreen;
   color: white;
   text-decoration: none;

@@ -12,8 +12,13 @@ class Landing extends Component {
     return (
       <div role="main" className="main-landing">
         <Nav />
-        <h2> Looking for a hiking trail around you ? </h2>{" "}
-        <Link to="/all-trails"> Search Trails </Link> <Footer />
+        <section className="landingBox">
+          <div className="landingBox-content">
+            <h2>Hike.Track.Rank.</h2>{" "}
+            <Link to="/all-trails"> Search Trails </Link>{" "}
+          </div>
+        </section>
+        <Footer />
       </div>
     );
   }

@@ -1,0 +1,51 @@
+.main-landing {
+  margin: 0 !important;
+  background-image: url("/img/header.jpg");
+  min-height: 100vh;
+  text-align: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-landing nav {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.main-landing nav a {
+  color: forestgreen;
+}
+
+.main-landing .Footer {
+  text-align: right;
+  color: white;
+}
+
+.main-landing .Footer a {
+  color: white;
+}
+
+.main-landing .landingBox {
+  display: flex;
+  flex: 1;
+}
+
+.main-landing .landingBox-content {
+  margin: auto;
+  padding: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+}
+
+.main-landing .landingBox-content a {
+  padding: 15px 30px;
+  font-size: 25px;
+  background-color: forestgreen;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  display: inline-block;
+  border-bottom: 3px solid darkgreen;
+}
