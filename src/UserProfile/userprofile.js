@@ -65,7 +65,9 @@ class UserProfile extends Component {
         <p>
           <strong>Longest Trail Completed:</strong> {longestTrail} miles
         </p>
-        <p className="completed-trails">Completed Trails</p>
+        {trails.length > 0 && (
+          <p className="completed-trails">Completed Trails</p>
+        )}
         <div className="trailList">
           <ul>{trails}</ul>
         </div>
