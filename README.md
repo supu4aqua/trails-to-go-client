@@ -17,7 +17,7 @@ Leaderboard shows the top hikers based on trails completed
 ![Landing Page](Landing.jpg)
 
 #### Search Trail:
-![Search Trail](Search_Trail.jpg)
+![Search Trail](SearchTrail.jpg)
 
 #### User Profile:
 ![Profile](Profile.jpg)
