@@ -14,7 +14,7 @@ Leaderboard shows the top hikers based on trails completed
 
 ## Screen Captures
 #### Landing Page:
-(![Landing Page](https://github.com/supu4aqua/trails-to-go-client/Landing.jpg?raw=true "LandingPage"))
+(![Landing Page](Landing.jpg)
 
 #### Search Trail:
 ![Search Trail](/relative/path/to/search_trail.jpg?raw=true "SearchTrail")
