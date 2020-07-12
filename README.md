@@ -14,16 +14,16 @@ Leaderboard shows the top hikers based on trails completed
 
 ## Screen Captures
 #### Landing Page:
-(![Landing Page](Landing.jpg)
+![Landing Page](Landing.jpg)
 
 #### Search Trail:
-![Search Trail](/relative/path/to/search_trail.jpg?raw=true "SearchTrail")
+![Search Trail](Search_Trail.jpg)
 
 #### User Profile:
-![Profile](/relative/path/to/Profile.jpg?raw=true "Profile")
+![Profile](Profile.jpg)
 
 #### Leaderboard: 
-![Leaderboard](/relative/path/to/Leaderboard.jpg?raw=true "Leaderboard")
+![Leaderboard](Leaderboard.jpg)
 
 
 ## Technology
