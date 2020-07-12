@@ -230,44 +230,46 @@ class AllTrails extends Component {
     return (
       <div className="all-trails">
         <Nav />
-        <header>
-          <h3> Search </h3>{" "}
-        </header>{" "}
-        <form id="js-form" onSubmit={(e) => this.handleSubmit(e)}>
-          <input
-            type="text"
-            className="search-trail"
-            name="zipcode"
-            id="zipcode"
-            placeholder="Enter Zipcode"
-            required
-          />
+        <main>
+          <header>
+            <h3> Search </h3>{" "}
+          </header>{" "}
+          <form id="js-form" onSubmit={(e) => this.handleSubmit(e)}>
+            <input
+              type="text"
+              className="search-trail"
+              name="zipcode"
+              id="zipcode"
+              placeholder="Enter Zipcode"
+              required
+            />
 
-          <button
-            type="submit"
-            title="Search Trails"
-            className="btn-search-trails"
-          >
-            Search Trail
-          </button>
-        </form>
-        {this.context.location !== "" && (
-          <p className="location">Results for: {this.context.location}</p>
-        )}
-        {/*Display all trails not completed by user*/}
-        <div className="trail-filters">{trailFilters}</div>
-        <section id="results">
-          <ul id="results-list">{trails}</ul>
-        </section>
-        {/*Completed trails section*/}
-        <section id="results">
-          {completedTrails.length > 0 && <h2>Completed</h2>}
-          <ul id="results-list">{completedTrails}</ul>
-        </section>
-        {/*Display errors, if any */}
-        {this.context.error !== "" && (
-          <div className="error-message">{this.context.error}</div>
-        )}
+            <button
+              type="submit"
+              title="Search Trails"
+              className="btn-search-trails"
+            >
+              Search Trail
+            </button>
+          </form>
+          {this.context.location !== "" && (
+            <p className="location">Results for: {this.context.location}</p>
+          )}
+          {/*Display all trails not completed by user*/}
+          <div className="trail-filters">{trailFilters}</div>
+          <section id="results">
+            <ul id="results-list">{trails}</ul>
+          </section>
+          {/*Completed trails section*/}
+          <section id="results">
+            {completedTrails.length > 0 && <h2>Completed</h2>}
+            <ul id="results-list">{completedTrails}</ul>
+          </section>
+          {/*Display errors, if any */}
+          {this.context.error !== "" && (
+            <div className="error-message">{this.context.error}</div>
+          )}
+        </main>
         <Footer />
       </div>
     );

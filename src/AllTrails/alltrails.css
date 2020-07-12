@@ -95,6 +95,11 @@ li.trails:hover {
   background-position-x: center;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+.all-trails main {
+  flex: 1;
 }
 
 .all-trails h3,

@@ -88,7 +88,7 @@ class Leaderboard extends Component {
         <section id="longest-by-user">
           {longestTrails.length > 0 && (
             <p className="leaderboard-title">
-              Top hikers based on longest trail completed
+              Longest trails completed by users
             </p>
           )}
           <ul id="longest-by-user-list">{longestTrails}</ul>

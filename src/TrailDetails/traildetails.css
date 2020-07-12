@@ -20,8 +20,9 @@
 }
 
 .details img {
-  width: 200px;
-  height: 200px;
+  max-width: 100%;
+  /* height: 200px; */
+  min-height: 100px;
 }
 .details .trail-details {
   margin-left: 20px;
@@ -32,9 +33,5 @@
   .details h3 {
     margin-top: 20px;
     font-size: 14px;
-  }
-  .details img {
-    width: 150px;
-    height: 150px;
   }
 }
