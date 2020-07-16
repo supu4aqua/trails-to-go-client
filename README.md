@@ -42,6 +42,12 @@ Leaderboard shows the top hikers based on trails completed
 - CSS3
   - [CSS Modules](https://github.com/css-modules/css-modules)
 
+### Back End
+
+- [Node](https://nodejs.org/en/) and [Express](https://expressjs.com/)
+  - [Mocha](https://mochajs.org/) test framework and [Chai](http://www.chaijs.com/) assertion library
+- [Postgres](https://www.postgresql.org)
+
 ### Testing
 
 - [Jest](https://jestjs.io/en/)
@@ -50,7 +56,9 @@ Leaderboard shows the top hikers based on trails completed
 
 - [Heroku](https://www.heroku.com/) Cloud Application Platform
 
-## Install and run locally
+## Client - Install and run locally
+
+\*\*\* NOTE: The client makes AJAX calls to the [Trails To Go API](https://github.com/supu4aqua/trails-to-go-server.git), which should also be running in your development environment
 
 \*\*\* NOTE: The client makes AJAX calls to the [Trails To Go API](https://github.com/supu4aqua/trails-to-go-server.git), which should also be running in your development environment
 
@@ -62,7 +70,64 @@ Leaderboard shows the top hikers based on trails completed
 - Run `npm start`
 - In browser, navigate to `localhost:3000` or your specified port
 
-- To test, run `npm test`
+<<<<<<< HEAD
+
+- # To test, run `npm test`
+
+## Server - Run Trail To Go API in a local development environment
+
+### Prerequisites
+
+- You will need these programs installed
+
+  - [Git](https://git-scm.com/)
+  - [Node.js](https://nodejs.org/en/)
+  - [npm](https://www.npmjs.com/)
+  - [Postgres](https://www.postgresql.org)
+
+### Installation
+
+- Clone this repository:
+  - `git clone https://github.com/supu4aqua/trails-to-go-server.git`
+- Move into folder:
+  - `cd trails-to-go-server/`
+- Run `npm install`
+
+### Run Program
+
+- Start PostgresSQL local server: `postgres`
+- Run `npm start` (or `npm run dev` to run with nodemon which auto-restarts on save changes)
+- Make requests using the root: `localhost:8080` or your specified port
+
+### Test
+
+- Start PostgresSQL local server
+  - `postgres`
+- Run `npm test`
+
+## API Overview
+
+## API
+
+```
+/api
+.
+├── /users
+│   └── GET
+│       ├── /
+│   └── POST
+│       └── /
+├── /completed
+│   └── GET
+│       ├── /
+│   └── POST
+│       └── /
+├── /leaderboard
+│   └── GET
+│       ├── /
+>>>>>>> 0a545a7cdb72a9f0e28c0093184ca9f04a7b33b5
+
+```
 
 ## Future Features
 
