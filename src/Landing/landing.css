@@ -49,3 +49,37 @@
   display: inline-block;
   border-bottom: 3px solid darkgreen;
 }
+
+.intro {
+  font-family: Museo Sans Rounded, Arial, sans-serif;
+}
+
+.intro h3 {
+  font-size: 35px;
+
+  margin-bottom: 5px !important;
+}
+
+.intro p {
+  font-size: 20px;
+  font-weight: bold;
+  font-style: oblique;
+  font-family: sans-serif;
+}
+.main-landing .intro {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+
+  .intro h3 {
+    font-size: 20px;
+  }
+  .intro p {
+    font-size: 15px;
+  }
+}

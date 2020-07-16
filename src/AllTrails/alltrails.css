@@ -118,6 +118,24 @@ li.trails:hover {
 all-trails h3 {
   padding-top: 0;
 }
+
+#js-form p,
+.b {
+  font-size: 12px;
+  color: maroon;
+  margin-right: 20px;
+}
+
+.b li {
+  list-style-type: square;
+  padding-bottom: 5px;
+  font-family: monospace;
+}
+.b img {
+  border: 1px solid black;
+  padding: 1px;
+}
+
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   li.trails {

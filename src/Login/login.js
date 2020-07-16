@@ -61,6 +61,7 @@ class Login extends Component {
               id="LoginForm__password"
             />
           </div>
+          <p>Demo Account : username - demo, password - demoaccount</p>
           <button type="submit">Login</button>
         </form>
         <Footer />

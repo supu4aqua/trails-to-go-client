@@ -4,6 +4,8 @@ import Context from "../Context";
 import Nav from "../Nav/nav";
 import Footer from "../Footer/footer";
 
+import { Redirect } from "react-router-dom";
+
 class TrailDetails extends Component {
   static contextType = Context;
 
@@ -14,27 +16,26 @@ class TrailDetails extends Component {
         ? this.context.filteredTrails.find(
             (trail) => trail.id === parseInt(this.props.match.params.id)
           )
-        : [];
+        : false;
 
-    const trailDetails =
-      findTrail.length > 0 ? (
-        <div>
-          <h3>{findTrail.name}</h3>
-          <p>Rating: {findTrail.stars}</p>
-          <p>Length: {findTrail.length} miles</p>
-          <p>Location: {findTrail.location}</p>
-          <p>{findTrail.summary}</p>
-          {findTrail.imgSmallMed !== "" && (
-            <img
-              src={findTrail.imgSmallMed}
-              alt="Preview"
-              className="img-trail"
-            />
-          )}
-        </div>
-      ) : (
-        []
-      );
+    const trailDetails = findTrail ? (
+      <div>
+        <h3>{findTrail.name}</h3>
+        <p>Rating: {findTrail.stars}</p>
+        <p>Length: {findTrail.length} miles</p>
+        <p>Location: {findTrail.location}</p>
+        <p>{findTrail.summary}</p>
+        {findTrail.imgSmallMed !== "" && (
+          <img
+            src={findTrail.imgSmallMed}
+            alt="Preview"
+            className="img-trail"
+          />
+        )}
+      </div>
+    ) : (
+      <Redirect to="/all-trails" />
+    );
 
     //Render the trail deteails
     return (

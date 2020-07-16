@@ -251,6 +251,25 @@ class AllTrails extends Component {
             >
               Search Trail
             </button>
+            <ul className="b">
+              <li>
+                Enter a zipcode and search hiking trails in the area. Ex - 11375
+              </li>
+              <li>Click on the trail name for more details.</li>
+              <li>
+                Login and mark a trail as 'Completed' by clicking{" "}
+                <img
+                  src="/img/completed.jpg"
+                  width="15"
+                  height="15"
+                  alt="completed"
+                  className="steps-completed"
+                />
+              </li>
+              <li>
+                Visit the Leaderboard to see how you rank up with our hikers.
+              </li>
+            </ul>
           </form>
           {this.context.location !== "" && (
             <p className="location">Results for: {this.context.location}</p>
