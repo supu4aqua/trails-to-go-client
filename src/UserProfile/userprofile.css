@@ -6,9 +6,10 @@
 .profile .go-back {
   margin-top: 20px;
   font-size: 15px;
-  margin: 20px;
+  margin-left: 40px;
 }
-.profile h3 {
+.profile h3,
+.profile h2 {
   padding: 0;
   display: block;
   text-align: center;
@@ -16,9 +17,10 @@
 }
 
 .profile h3,
+.profile h2,
 .profile p,
 .profile .trailList {
-  margin-left: 20px;
+  margin-left: 40px;
   font-family: monospace;
 }
 
@@ -29,4 +31,7 @@
 
 .profile .trails-list {
   margin-bottom: 10px;
+}
+.trailList {
+  padding-right: 30px;
 }

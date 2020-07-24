@@ -44,9 +44,9 @@ class Registration extends Component {
     return (
       <div role="main" className="registration">
         <Nav />
-        <header>
-          <h3>Sign up for a new account</h3>
-        </header>
+
+        <h2>Sign up for a new account</h2>
+
         <form className="RegistrationForm" onSubmit={this.handleSubmit}>
           <div role="alert">{error && <p className="red">{error}</p>}</div>
           <div className="full_name">

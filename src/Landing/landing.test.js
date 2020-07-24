@@ -1,10 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Landing from './landing';
+import React from "react";
+import ReactDOM from "react-dom";
+import Landing from "./landing";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-ReactDOM.render(<Landing />, div);
-ReactDOM.unmountComponentAtNode(div);
+import { BrowserRouter as Router } from "react-router-dom";
 
+describe("Landing component", () => {
+  it("renders without crashing", () => {
+    const div = document.createElement("div");
+    ReactDOM.render(
+      <Router>
+        <Landing />
+      </Router>,
+      div
+    );
+    ReactDOM.unmountComponentAtNode(div);
+  });
 });

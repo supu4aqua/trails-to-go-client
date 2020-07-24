@@ -15,16 +15,18 @@
 }
 
 .main-landing nav a {
-  color: forestgreen;
+  color: #00612f;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .main-landing .Footer {
   text-align: right;
-  color: white;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .main-landing .Footer a {
-  color: white;
+  color: black;
 }
 
 .main-landing .landingBox {
@@ -42,7 +44,7 @@
 .main-landing .landingBox-content a {
   padding: 15px 30px;
   font-size: 25px;
-  background-color: forestgreen;
+  background-color: #1d6f1d;
   color: white;
   text-decoration: none;
   border-radius: 10px;
@@ -54,14 +56,15 @@
   font-family: Museo Sans Rounded, Arial, sans-serif;
 }
 
-.intro h3 {
-  font-size: 35px;
+.intro h3,
+.intro h2 {
+  font-size: 20px;
 
   margin-bottom: 5px !important;
 }
 
 .intro p {
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
   font-style: oblique;
   font-family: sans-serif;
@@ -71,15 +74,12 @@
   flex: 1;
   flex-direction: column;
   margin: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  max-height: 200px;
 }
 
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
-
-  .intro h3 {
-    font-size: 20px;
-  }
+@media only screen and (min-width: 768px) {
   .intro p {
-    font-size: 15px;
+    font-size: 20px;
   }
 }

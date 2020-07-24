@@ -32,14 +32,13 @@ li.trails {
   min-width: 20%;
   border: 1px solid forestgreen;
   padding: 15px 15px 0 15px;
-  margin: 15px;
+  margin-top: 15px;
+
   position: relative;
 }
 
-ul#results-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+ul.results-list {
+  margin-right: 30px;
 }
 
 .trails a {
@@ -136,14 +135,27 @@ all-trails h3 {
   padding: 1px;
 }
 
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
+@media only screen and (min-width: 769px) {
   li.trails {
     margin: 25px 0;
+    margin-right: 20px;
   }
-  ul#results-list {
-    flex-direction: column;
+  ul.results-list {
     padding: 0;
-    margin: 20px;
+    margin-left: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .all-trails h3,
+  .all-trails h2,
+  #js-form {
+    margin-left: 40px;
+  }
+  .all-trails .location {
+    margin-left: 40px;
+  }
+  .trail-filters section * {
+    margin-left: 40px;
   }
 }

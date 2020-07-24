@@ -2,8 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 import UserProfile from "./userprofile";
 
-it("renders without crashing", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(<UserProfile />, div);
-  ReactDOM.unmountComponentAtNode(div);
+import { BrowserRouter as Router } from "react-router-dom";
+
+describe("UserProfile component", () => {
+  it("renders without crashing", () => {
+    const div = document.createElement("div");
+    ReactDOM.render(
+      <Router>
+        <UserProfile />
+      </Router>,
+      div
+    );
+    ReactDOM.unmountComponentAtNode(div);
+  });
 });

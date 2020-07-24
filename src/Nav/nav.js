@@ -32,25 +32,24 @@ class Nav extends Component {
   renderLoginLink() {
     return (
       <div className="Header__not-logged-in">
-        <Link to="/registration"> Register </Link>{" "}
-        <span className="Hyph"> {" - "} </span> <Link to="/login"> Login </Link>{" "}
-        <span className="Hyph"> {" - "} </span>{" "}
-        <Link to={`/leaderboard`}> Leaderboard </Link>{" "}
+        <Link to="/registration"> Register </Link>
+        <span className="Hyph"> {" - "}</span> <Link to="/login"> Login </Link>
+        <span className="Hyph"> {" - "} </span>
+        <Link to={`/leaderboard`}> Leaderboard </Link>
       </div>
     );
   }
   render() {
     return (
-      <nav role="main" className="Nav">
+      <nav role="navigation" className="Nav">
         <h1>
-          <Link to="/">Trails To Go </Link>{" "}
-        </h1>{" "}
+          <Link to="/">Trails To Go </Link>
+        </h1>
         <div className="Login">
-          {" "}
           {TokenService.hasAuthToken()
             ? this.renderLogoutLink()
-            : this.renderLoginLink()}{" "}
-        </div>{" "}
+            : this.renderLoginLink()}
+        </div>
       </nav>
     );
   }

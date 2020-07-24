@@ -9,7 +9,7 @@ class UserProfile extends Component {
 
   //Get all completed trails when component mounts
   componentDidMount() {
-    this.context.getCompleted();
+    this.context.getCompleted && this.context.getCompleted();
   }
 
   render() {
@@ -18,7 +18,9 @@ class UserProfile extends Component {
     let longestTrail = 0;
     let trails = [];
 
-    const completedTrails = this.context.completed;
+    const completedTrails = this.context.completed
+      ? this.context.completed
+      : [];
 
     if (completedTrails.length) {
       //Find number of trails completed by user
@@ -48,29 +50,31 @@ class UserProfile extends Component {
     return (
       <div className="profile">
         <Nav />
-        <button
-          title="Go back"
-          className="go-back"
-          onClick={() => this.props.history.push("/all-trails")}
-        >
-          Back
-        </button>
-        <h3> User Profile </h3>{" "}
-        <p>
-          <strong>Trails completed:</strong> {numTrailsCompleted}
-        </p>
-        <p>
-          <strong>Distance Walked:</strong> {distanceWalked.toFixed(2)} miles
-        </p>
-        <p>
-          <strong>Longest Trail Completed:</strong> {longestTrail} miles
-        </p>
-        {trails.length > 0 && (
-          <p className="completed-trails">Completed Trails</p>
-        )}
-        <div className="trailList">
-          <ul>{trails}</ul>
-        </div>
+        <main>
+          <button
+            title="Go back"
+            className="go-back"
+            onClick={() => this.props.history.push("/all-trails")}
+          >
+            Back
+          </button>
+          <h2> User Profile </h2>{" "}
+          <p>
+            <strong>Trails completed:</strong> {numTrailsCompleted}
+          </p>
+          <p>
+            <strong>Distance Walked:</strong> {distanceWalked.toFixed(2)} miles
+          </p>
+          <p>
+            <strong>Longest Trail Completed:</strong> {longestTrail} miles
+          </p>
+          {trails.length > 0 && (
+            <p className="completed-trails">Completed Trails</p>
+          )}
+          <div className="trailList">
+            <ul>{trails}</ul>
+          </div>
+        </main>
         <Footer />
       </div>
     );

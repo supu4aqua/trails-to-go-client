@@ -138,7 +138,7 @@ class AllTrails extends Component {
     let trailsCompleted = [];
     let completedTrails = [];
 
-    if (this.context.filteredTrails.length > 0) {
+    if (this.context.filteredTrails && this.context.filteredTrails.length > 0) {
       //Find all trails not completed by user
       trailsNotCompleted = this.context.filteredTrails.filter(
         (filteredTrail) =>
@@ -161,6 +161,7 @@ class AllTrails extends Component {
               <NavLink to={`/trails/${trail.id}`}>{trail.name}</NavLink>
               <button
                 className="completed"
+                aria-label="completed"
                 onClick={() => {
                   if (window.confirm("Did you complete this trail?"))
                     this.handleCompleted(trail.id);
@@ -194,6 +195,7 @@ class AllTrails extends Component {
               <NavLink to={`/trails/${trail.id}`}>{trail.name}</NavLink>
               <button
                 className="completed"
+                aria-label="completed"
                 onClick={() => {
                   if (window.confirm("Did you complete this trail?"))
                     this.handleCompleted(trail.id);
@@ -209,7 +211,7 @@ class AllTrails extends Component {
 
     //Trail search filters
     const trailFilters =
-      this.context.filteredTrails.length > 0 ? (
+      this.context.filteredTrails && this.context.filteredTrails.length > 0 ? (
         <section>
           <label htmlFor="sort">Sort By</label>
           <select
@@ -231,9 +233,8 @@ class AllTrails extends Component {
       <div className="all-trails">
         <Nav />
         <main>
-          <header>
-            <h3> Search </h3>{" "}
-          </header>{" "}
+          <h2> Search </h2>
+
           <form id="js-form" onSubmit={(e) => this.handleSubmit(e)}>
             <input
               type="text"
@@ -241,6 +242,7 @@ class AllTrails extends Component {
               name="zipcode"
               id="zipcode"
               placeholder="Enter Zipcode"
+              aria-label="Enter Zipcode"
               required
             />
 
@@ -276,13 +278,13 @@ class AllTrails extends Component {
           )}
           {/*Display all trails not completed by user*/}
           <div className="trail-filters">{trailFilters}</div>
-          <section id="results">
-            <ul id="results-list">{trails}</ul>
+          <section className="results">
+            <ul className="results-list">{trails}</ul>
           </section>
           {/*Completed trails section*/}
-          <section id="results">
+          <section className="results">
             {completedTrails.length > 0 && <h2>Completed</h2>}
-            <ul id="results-list">{completedTrails}</ul>
+            <ul className="results-list">{completedTrails}</ul>
           </section>
           {/*Display errors, if any */}
           {this.context.error !== "" && (

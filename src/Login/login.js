@@ -43,9 +43,7 @@ class Login extends Component {
     return (
       <div role="main" className="registration">
         <Nav />
-        <header>
-          <h3> Login </h3>{" "}
-        </header>{" "}
+        <h2> Login </h2>{" "}
         <form className="RegistrationForm" onSubmit={this.handleSubmitJwtAuth}>
           <div role="alert">{error && <p className="red">{error}</p>}</div>
           <div className="user_name">

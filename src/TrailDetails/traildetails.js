@@ -12,7 +12,7 @@ class TrailDetails extends Component {
   render() {
     //Find the trail information from filtered trails
     const findTrail =
-      this.context.filteredTrails.length > 0
+      this.context.filteredTrails && this.context.filteredTrails.length > 0
         ? this.context.filteredTrails.find(
             (trail) => trail.id === parseInt(this.props.match.params.id)
           )
@@ -20,7 +20,7 @@ class TrailDetails extends Component {
 
     const trailDetails = findTrail ? (
       <div>
-        <h3>{findTrail.name}</h3>
+        <h2>{findTrail.name}</h2>
         <p>Rating: {findTrail.stars}</p>
         <p>Length: {findTrail.length} miles</p>
         <p>Location: {findTrail.location}</p>
@@ -33,13 +33,15 @@ class TrailDetails extends Component {
           />
         )}
       </div>
+    ) : this.props.test ? (
+      ""
     ) : (
       <Redirect to="/all-trails" />
     );
 
     //Render the trail deteails
     return (
-      <div role="main" className="details">
+      <div className="details">
         <Nav />
         <div role="main" className="trail-details">
           <button
@@ -50,8 +52,8 @@ class TrailDetails extends Component {
             Back
           </button>
           {trailDetails}
-          <Footer />
         </div>
+        <Footer />
       </div>
     );
   }

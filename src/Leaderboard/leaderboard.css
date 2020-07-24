@@ -4,17 +4,15 @@
   margin: 20px;
 }
 
-.Leaderboard {
-  margin: 0 !important;
-}
-.Leaderboard h3 {
-  padding: 0;
+.Leaderboard h3,
+.Leaderboard h2 {
   display: block;
   text-align: center;
   margin-top: 0;
 }
 
 .Leaderboard h3,
+.Leaderboard h2,
 .leaderboard-title,
 .length-by-user p {
   font-family: monospace;
@@ -22,24 +20,23 @@
 .leaderboard-title {
   font-size: 20px;
   font-weight: bold;
-  color: forestgreen;
+  color: #1d6f1d;
   margin: 20px;
 }
+.leaderboard-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #1d6f1d;
+}
+.Leaderboard section * {
+  font-size: 13px;
+}
+.Leaderboard Footer {
+  font-size: 8px;
+}
 
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
-  .Leaderboard h3 {
-    font-size: 15px;
-  }
-  .leaderboard-title {
-    font-size: 15px;
-    font-weight: bold;
-    color: forestgreen;
-  }
+@media only screen and (min-width: 768px) {
   .Leaderboard section * {
-    font-size: 13px;
-  }
-  .Leaderboard Footer {
-    font-size: 8px;
+    margin-left: 40px;
   }
 }

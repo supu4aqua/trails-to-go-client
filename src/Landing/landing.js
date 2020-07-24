@@ -13,8 +13,8 @@ class Landing extends Component {
       <div role="main" className="main-landing">
         <Nav />
         <div className="intro">
-          <h3>Looking to discover new hiking trails?</h3>
-          <p>Search trails and mark them as completed</p>
+          <h1>Looking to discover new hiking trails?</h1>
+          <h2>Search trails and mark them as completed</h2>
         </div>
         <section className="landingBox">
           <div className="landingBox-content">

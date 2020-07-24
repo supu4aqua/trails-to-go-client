@@ -4,7 +4,7 @@ import "./footer.css";
 class Footer extends Component {
   render() {
     return (
-      <div className="Footer">
+      <div role="contentinfo" className="Footer">
         <p>
           &copy; Supreet Kaur | 2020 -{" "}
           <span>
