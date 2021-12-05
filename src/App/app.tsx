@@ -14,7 +14,7 @@ import IdleService from "../services/idle-service";
 import Leaderboard from "../Leaderboard/leaderboard";
 import Context from "../Context";
 import ErrorBoundary from "../ErrorBoundary";
-
+//Test branch switch
 class App extends Component {
   state = {
     trails: [],
