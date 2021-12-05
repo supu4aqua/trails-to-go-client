@@ -16,6 +16,7 @@ import Context from "../Context";
 import ErrorBoundary from "../ErrorBoundary";
 //High priority
 //Test branch switch
+//Another comment
 class App extends Component {
   state = {
     trails: [],
