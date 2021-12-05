@@ -24,14 +24,14 @@ class App extends Component {
     users: [],
     completed: [],
     hasError: false,
-    setTrails: (trails, location) => {
+    setTrails: (trails: any, location: any) => {
       this.setState({ trails, filteredTrails: trails, location });
     },
-    setError: (message) => {
+    setError: (message: any) => {
       this.setState({ error: message });
     },
     //Sort filtered trails
-    sortBy: (key) => {
+    sortBy: (key: string | number) => {
       let filteredTrails = this.state.trails.sort((a, b) => b[key] - a[key]);
       this.setState({ filteredTrails });
     },
@@ -45,7 +45,7 @@ class App extends Component {
       });
     },
     //Update completed trails in state
-    setCompleted: (completedTrail) => {
+    setCompleted: (completedTrail: any) => {
       this.setState({
         completed: [...this.state.completed, completedTrail],
       });
@@ -78,13 +78,13 @@ class App extends Component {
     },
   };
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(error: any) {
     console.error(error);
     return { hasError: true };
   }
 
   //To fetch data from server - {stateData} will be 'users'
-  fetchData(stateData) {
+  fetchData(stateData: string) {
     const url = config.API_ENDPOINT + `/${stateData}`;
     fetch(url)
       .then((res) => {
@@ -164,20 +164,20 @@ class App extends Component {
 
   render() {
     return (
-      <div className="Main">
+      <div className='Main'>
         <Context.Provider value={this.state}>
           {this.state.hasError && (
-            <p className="red">There was an error! Oh no!</p>
+            <p className='red'>There was an error! Oh no!</p>
           )}
           <Switch>
             <ErrorBoundary>
-              <Route exact path="/" component={Landing} />
-              <Route exact path="/registration" component={Registration} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/all-trails" component={AllTrails} />
-              <Route exact path="/trails/:id" component={TrailDetails} />
-              <Route exact path="/userprofile" component={UserProfile} />
-              <Route exact path="/leaderboard" component={Leaderboard} />
+              <Route exact path='/' component={Landing} />
+              <Route exact path='/registration' component={Registration} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/all-trails' component={AllTrails} />
+              <Route exact path='/trails/:id' component={TrailDetails} />
+              <Route exact path='/userprofile' component={UserProfile} />
+              <Route exact path='/leaderboard' component={Leaderboard} />
             </ErrorBoundary>{" "}
             <Route render={() => <h2>Page Not Found</h2>} />
           </Switch>{" "}
