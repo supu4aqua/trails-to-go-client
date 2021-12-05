@@ -15,6 +15,7 @@ import Leaderboard from "../Leaderboard/leaderboard";
 import Context from "../Context";
 import ErrorBoundary from "../ErrorBoundary";
 //Test branch switch
+//Another comment
 class App extends Component {
   state = {
     trails: [],
